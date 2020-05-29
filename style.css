@@ -1,0 +1,51 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: #212121;
+    background-color: #eee;
+}
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+.wizard {
+    background-color: #fff;
+    padding: 20px;
+}
+.wizard_steps {    
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: auto auto auto auto;
+}
+.wizard_steps > div {
+    font-weight: 700;
+    text-align: center;
+    background-color: #eee; 
+    padding: 10px; 
+    cursor: pointer;
+}
+.wizard_steps div.active {
+    background-color: #212121;
+    color: #fff;
+}
+.wizard_steps .step_text {
+    font-size: 12px;
+}
+.wizard_content {
+    padding: 20px 0;
+}
+.wizard_mobile_header {
+    display: none;
+    padding: 20px 0;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+@media screen and (max-width:420px) {
+    .wizard_mobile_header {        
+        display: block;
+    }
+    .wizard_steps .step_text {
+        display: none;
+    } 
+}

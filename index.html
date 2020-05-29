@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Wizard Test</h1>
+
+        <div class="wizard">
+            <div class="wizard_steps">
+                <div data-mostrar="step_one" class="active">
+                    <div class="step">1</div>
+                    <span class="step_text">Step One</span>
+                </div>
+                <div data-mostrar="step_two">
+                    <div class="step">2</div>
+                    <span class="step_text">Step Two</span>
+                </div>
+                <div data-mostrar="step_three">
+                    <div class="step">3</div>
+                    <span class="step_text">Step Three</span>
+                </div>
+                <div data-mostrar="step_four">
+                    <div class="step">4</div>
+                    <span class="step_text">Step Four</span>
+                </div>
+            </div>
+
+            <div class="wizard_mobile_header"></div>
+            
+            <div id="step_one" class="wizard_content">
+                <p>Step 1 Content.</p>
+            </div>
+            <div id="step_two" class="wizard_content">
+                <p>Step 2 Content.</p>
+            </div>
+            <div id="step_three" class="wizard_content">
+                <p>Step 3 Content.</p>
+            </div>
+            <div id="step_four" class="wizard_content">
+                <p>Step 4 Content.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            var steps = $('.wizard_steps > div');
+            var stepContent = $('.wizard .wizard_content');
+            var mobileStepHeader = $('.wizard_mobile_header');
+
+            function actualStep() {
+                var activeStep = $('.wizard_steps > div.active .step_text').text();
+                mobileStepHeader.text(activeStep);
+            }
+            actualStep();
+
+            stepContent.hide().filter(':first').show();
+
+            steps.on('click', function() {
+                var step = $(this).data('mostrar'); 
+
+                stepContent.hide();
+                steps.removeClass('active');
+
+                $(this).addClass('active');
+                $('#'+ step).show(); 
+
+                actualStep();                
+            });
+
+            if($(window).width() < 420) {
+
+                
+            }
+
+            $(window).resize(function() {
+                
+            });
+            
+        });
+    </script>
+
+</body>
+</html>
